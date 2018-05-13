@@ -23,4 +23,8 @@ public class Judge extends Participant {
     public boolean isHeadJudge() {
         return type == JudgeType.HEAD;
     }
+    
+    public boolean isExperienced() {
+        return type == JudgeType.HEAD || type == JudgeType.NORMAL;
+    }
 }
