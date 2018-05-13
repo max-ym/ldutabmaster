@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="src/|hsqldb/" kind="src" path=""/>
+	<classpathentry kind="lib" path="javax.servlet-2.4.0.jar"/>
+	<classpathentry kind="lib" path="hsqldb"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
