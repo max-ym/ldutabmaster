@@ -1,4 +1,4 @@
-package com.ldu.tabmaster.tab;
+package com.ldu.tabmaster.tab.elements;
 
 public class AmbiguousPlaceException extends Exception {
 
