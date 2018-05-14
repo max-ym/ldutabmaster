@@ -1,6 +1,6 @@
 package com.ldu.tabmaster.tab;
 
-public class Team implements Comparable<Team> {
+public class Team {
 
     private String name;
     
@@ -38,15 +38,5 @@ public class Team implements Comparable<Team> {
     
     public int sumOfSpeakerPoints() {
         return speaker0.speakerPoints() + speaker1.speakerPoints();
-    }
-
-    @Override
-    public int compareTo(Team o) {
-        if (this.score > o.score)
-            return 1;
-        else if (this.score == o.score)
-            return 0;
-        else
-            return -1;
     }
 }
