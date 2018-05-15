@@ -1,18 +1,18 @@
 package com.ldu.tabmaster.tab;
 
-import java.util.LinkedList;
+import java.util.Set;
 
 import com.ldu.tabmaster.tab.elements.*;
 
 public class TournamentBuilder {
 
-    private LinkedList<Judge> judges;
-    private LinkedList<Team>  teams;
+    private Set<Judge>      judges;
+    private Set<Team>       teams;
 
-    private int               teamNumber;
-    private int               judgeNumber;
-    
-    private ConflictManager   conflicts;
+    private int             teamNumber;
+    private int             judgeNumber;
+
+    private ConflictManager conflicts;
 
     /**
      * Create new builder for tournament with predefined number of
@@ -35,15 +35,15 @@ public class TournamentBuilder {
      * create the tournament.
      * 
      * @param teamNumber
-     *          Number of teams joined the tournament.
+     *            Number of teams joined the tournament.
      * @param judgeNumber
-     *          Number of experienced judges of the tournament.
+     *            Number of experienced judges of the tournament.
      * @throws TournamentArgumentException
-     *          Exception occurs when team number cannot be split into
-     *          rooms with 4 teams. Also, it occurs when minimal calculated
-     *          amount of judges is above the given number of judges of the
-     *          tournament.
-     *          tournament.
+     *             Exception occurs when team number cannot be split into
+     *             rooms with 4 teams. Also, it occurs when minimal calculated
+     *             amount of judges is above the given number of judges of the
+     *             tournament.
+     *             tournament.
      */
     private static void validateArgs(int teamNumber, int judgeNumber)
             throws TournamentArgumentException {
