@@ -1,5 +1,6 @@
 package com.ldu.tabmaster.tab;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.ldu.tabmaster.tab.elements.*;
@@ -9,10 +10,8 @@ public class TournamentBuilder {
     private Set<Judge>      judges;
     private Set<Team>       teams;
 
-    private int             teamNumber;
-    private int             judgeNumber;
-
-    private ConflictManager conflicts;
+    private int             expectedTeamNumber;
+    private int             expectedJudgeNumber;
 
     /**
      * Create new builder for tournament with predefined number of
@@ -22,12 +21,30 @@ public class TournamentBuilder {
      *            Number of teams that joined the tournament.
      * @param judgeNumber
      *            Number of judges in the tournament.
+     * @throws TournamentArgumentException
+     *             Exception occurs when team number cannot be split into
+     *             rooms with 4 teams. Also, it occurs when minimal calculated
+     *             amount of judges is above the given number of judges of the
+     *             tournament.
+     *             tournament.
      */
-    public TournamentBuilder(int teamNumber, int judgeNumber) {
+    public TournamentBuilder(int teamNumber, int judgeNumber)
+            throws TournamentArgumentException {
         validateArgs(teamNumber, judgeNumber);
 
-        this.teamNumber = teamNumber;
-        this.judgeNumber = judgeNumber;
+        this.expectedTeamNumber = teamNumber;
+        this.expectedJudgeNumber = judgeNumber;
+
+        this.judges = new HashSet<Judge>();
+        this.teams = new HashSet<Team>();
+    }
+    
+    public void addJudge(Judge j) {
+        judges.add(j);
+    }
+    
+    public void addTeam(Team t) {
+        teams.add(t);
     }
 
     /**
