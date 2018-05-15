@@ -9,14 +9,14 @@ import com.ldu.tabmaster.tab.elements.*;
 
 public class TournamentBuilder {
 
-    private Set<Judge>   judges;
-    private Set<Team>    teams;
+    private HashSet<Judge>     judges;
+    private HashSet<Team>      teams;
 
-    private int          expectedTeamNumber;
-    private int          expectedJudgeNumber;
-    private int          expectedMotionNumber;
+    private int                expectedTeamNumber;
+    private int                expectedJudgeNumber;
+    private int                expectedMotionNumber;
 
-    private List<Motion> motions;
+    private LinkedList<Motion> motions;
 
     /**
      * Create new builder for tournament with predefined number of
@@ -58,6 +58,18 @@ public class TournamentBuilder {
 
     public void addMotion(Motion motion) {
         motions.add(motion);
+    }
+
+    public Set<Judge> judges() {
+        return new HashSet<Judge>(judges);
+    }
+    
+    public Set<Team> teams() {
+        return new HashSet<Team>(teams);
+    }
+    
+    public List<Motion> motions() {
+        return new LinkedList<Motion>(motions);
     }
 
     /**
