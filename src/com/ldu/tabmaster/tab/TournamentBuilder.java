@@ -9,14 +9,16 @@ import com.ldu.tabmaster.tab.elements.*;
 
 public class TournamentBuilder {
 
-    private HashSet<Judge>     judges;
-    private HashSet<Team>      teams;
+    private HashSet<ExperiencedJudge> judges;
+    private HashSet<Wing>             wings;
+    private HashSet<Team>             teams;
 
-    private int                expectedTeamNumber;
-    private int                expectedJudgeNumber;
-    private int                expectedMotionNumber;
+    private int                       expectedTeamNumber;
+    private int                       expectedJudgeNumber;
+    private int                       expectedWingNumber;
+    private int                       expectedMotionNumber;
 
-    private LinkedList<Motion> motions;
+    private LinkedList<Motion>        motions;
 
     /**
      * Create new builder for tournament with predefined number of
@@ -35,21 +37,28 @@ public class TournamentBuilder {
      *             tournament.
      *             tournament.
      */
-    public TournamentBuilder(int teamNumber, int judgeNumber, int motionNumber)
+    public TournamentBuilder(int judgeNumber, int wingNumber, 
+            int teamNumber, int motionNumber)
             throws TournamentArgumentException {
         validateArgs(teamNumber, judgeNumber);
 
         this.expectedTeamNumber = teamNumber;
         this.expectedJudgeNumber = judgeNumber;
+        this.expectedWingNumber = wingNumber;
         this.expectedMotionNumber = motionNumber;
 
-        this.judges = new HashSet<Judge>();
+        this.judges = new HashSet<ExperiencedJudge>();
+        this.wings = new HashSet<Wing>();
         this.teams = new HashSet<Team>();
         this.motions = new LinkedList<Motion>();
     }
 
-    public void addJudge(Judge j) {
+    public void addJudge(ExperiencedJudge j) {
         judges.add(j);
+    }
+    
+    public void addWing(Wing w) {
+        wings.add(w);
     }
 
     public void addTeam(Team t) {
@@ -60,34 +69,41 @@ public class TournamentBuilder {
         motions.add(motion);
     }
 
-    public Set<Judge> judges() {
-        return new HashSet<Judge>(judges);
+    public Set<ExperiencedJudge> judges() {
+        return new HashSet<ExperiencedJudge>(judges);
     }
     
+    public Set<Wing> wings() {
+        return new HashSet<Wing>(wings);
+    }
+
     public Set<Team> teams() {
         return new HashSet<Team>(teams);
     }
-    
+
     public List<Motion> motions() {
         return new LinkedList<Motion>(motions);
     }
-    
-    public Tournament build()
-            throws TournamentArgumentException {
+
+    public Tournament build() throws TournamentArgumentException {
         if (judges.size() != expectedJudgeNumber) {
-            throw new UnmatchedJudgeNumberException(
-                    judges.size(), expectedJudgeNumber);
+            throw new UnmatchedJudgeNumberException(judges.size(),
+                    expectedJudgeNumber);
         }
         if (teams.size() != expectedTeamNumber) {
-            throw new UnmatchedTeamNumberException(
-                    teams.size(), expectedTeamNumber);
+            throw new UnmatchedTeamNumberException(teams.size(),
+                    expectedTeamNumber);
         }
         if (motions.size() != expectedMotionNumber) {
-            throw new UnmatchedMotionNumberException(
-                    motions.size(), expectedMotionNumber);
+            throw new UnmatchedMotionNumberException(motions.size(),
+                    expectedMotionNumber);
         }
-        
-        return new Tournament(judges, teams, motions);
+        if (wings.size() != expectedWingNumber) {
+            throw new UnmatchedMotionNumberException(wings.size(),
+                    expectedWingNumber);
+        }
+
+        return new Tournament(judges, wings, teams, motions);
     }
 
     /**

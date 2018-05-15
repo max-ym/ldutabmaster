@@ -14,19 +14,19 @@ import com.ldu.tabmaster.tab.elements.*;
  */
 public class Tournament {
 
-    private HashSet<Judge>     judges;
-    private HashSet<Team>      teams;
-    private LinkedList<Motion> motions;
+    private HashSet<ExperiencedJudge> judges;
+    private HashSet<Wing>             wings;
+    private HashSet<Team>             teams;
+    private LinkedList<Motion>        motions;
 
-    private int                currentRound = 0;
+    private int                       currentRound = 0;
 
-    Tournament(HashSet<Judge> judges, HashSet<Team> teams,
-            LinkedList<Motion> motions) {
+    Tournament(HashSet<ExperiencedJudge> judges, HashSet<Wing> wings,
+            HashSet<Team> teams, LinkedList<Motion> motions) {
         this.judges = judges;
+        this.wings = wings;
         this.teams = teams;
         this.motions = motions;
     }
 
-    
-    
 }
