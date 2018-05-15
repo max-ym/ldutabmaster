@@ -1,17 +1,22 @@
 package com.ldu.tabmaster.tab;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import com.ldu.tabmaster.tab.elements.*;
 
 public class TournamentBuilder {
 
-    private Set<Judge>      judges;
-    private Set<Team>       teams;
+    private Set<Judge>   judges;
+    private Set<Team>    teams;
 
-    private int             expectedTeamNumber;
-    private int             expectedJudgeNumber;
+    private int          expectedTeamNumber;
+    private int          expectedJudgeNumber;
+    private int          expectedMotionNumber;
+
+    private List<Motion> motions;
 
     /**
      * Create new builder for tournament with predefined number of
@@ -21,6 +26,8 @@ public class TournamentBuilder {
      *            Number of teams that joined the tournament.
      * @param judgeNumber
      *            Number of judges in the tournament.
+     * @param motionNumber
+     *            Number of motions of this tournament.
      * @throws TournamentArgumentException
      *             Exception occurs when team number cannot be split into
      *             rooms with 4 teams. Also, it occurs when minimal calculated
@@ -28,23 +35,29 @@ public class TournamentBuilder {
      *             tournament.
      *             tournament.
      */
-    public TournamentBuilder(int teamNumber, int judgeNumber)
+    public TournamentBuilder(int teamNumber, int judgeNumber, int motionNumber)
             throws TournamentArgumentException {
         validateArgs(teamNumber, judgeNumber);
 
         this.expectedTeamNumber = teamNumber;
         this.expectedJudgeNumber = judgeNumber;
+        this.expectedMotionNumber = motionNumber;
 
         this.judges = new HashSet<Judge>();
         this.teams = new HashSet<Team>();
+        this.motions = new LinkedList<Motion>();
     }
-    
+
     public void addJudge(Judge j) {
         judges.add(j);
     }
-    
+
     public void addTeam(Team t) {
         teams.add(t);
+    }
+
+    public void addMotion(Motion motion) {
+        motions.add(motion);
     }
 
     /**
