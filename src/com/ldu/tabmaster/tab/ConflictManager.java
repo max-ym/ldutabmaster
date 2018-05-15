@@ -1,6 +1,7 @@
 package com.ldu.tabmaster.tab;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import com.ldu.tabmaster.tab.elements.*;
 
@@ -12,14 +13,14 @@ import com.ldu.tabmaster.tab.elements.*;
  */
 public class ConflictManager {
 
-    private HashMap<Judge, Team[]> judgeWithTeams;
-    private HashMap<Team, Team[]>  teamWithTeams;
-    private HashMap<Team, Judge[]> teamWithJudges;
+    private HashMap<Judge, Set<Team>> judgeWithTeams;
+    private HashMap<Team, Set<Team>>  teamWithTeams;
+    private HashMap<Team, Set<Judge>> teamWithJudges;
 
     public ConflictManager() {
-        judgeWithTeams = new HashMap<Judge, Team[]>();
-        teamWithTeams = new HashMap<Team, Team[]>();
-        teamWithJudges = new HashMap<Team, Judge[]>();
+        judgeWithTeams = new HashMap<Judge, Set<Team>>();
+        teamWithTeams = new HashMap<Team, Set<Team>>();
+        teamWithJudges = new HashMap<Team, Set<Judge>>();
     }
 
     /**
@@ -28,9 +29,9 @@ public class ConflictManager {
      * @param judge
      *            Particular judge with whom teams are in conflict.
      * @return
-     *         Array with all conflicting teams or NULL if any.
+     *         Set with all conflicting teams.
      */
-    public Team[] judgeConflicts(Judge judge) {
+    public Set<Team> judgeConflicts(Judge judge) {
         return judgeWithTeams.get(judge);
     }
 
@@ -40,9 +41,9 @@ public class ConflictManager {
      * @param team
      *            Particular team with which judges are in conflict.
      * @return
-     *         Array with all conflicting judges or NULL if any.
+     *         Set with all conflicting judges.
      */
-    public Judge[] teamConflictsWithJudges(Team team) {
+    public Set<Judge> teamConflictsWithJudges(Team team) {
         return teamWithJudges.get(team);
     }
 
@@ -52,9 +53,9 @@ public class ConflictManager {
      * @param team
      *            Particular team with which teams are in conflict.
      * @return
-     *         Array with all conflicting teams or NULL if any.
+     *         Array with all conflicting teams.
      */
-    public Team[] teamConflictsWithTeams(Team team) {
+    public Set<Team> teamConflictsWithTeams(Team team) {
         return teamWithTeams.get(team);
     }
 
