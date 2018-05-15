@@ -18,6 +18,8 @@ public class Tournament {
     private HashSet<Team>      teams;
     private LinkedList<Motion> motions;
 
+    private int                currentRound = 0;
+
     Tournament(HashSet<Judge> judges, HashSet<Team> teams,
             LinkedList<Motion> motions) {
         this.judges = judges;
@@ -25,4 +27,6 @@ public class Tournament {
         this.motions = motions;
     }
 
+    
+    
 }
