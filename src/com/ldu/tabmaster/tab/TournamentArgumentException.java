@@ -5,6 +5,10 @@ public class TournamentArgumentException extends IllegalArgumentException {
     public TournamentArgumentException(String string) {
         super(string);
     }
+    
+    public TournamentArgumentException() {
+        super();
+    }
 
     /**
      * 

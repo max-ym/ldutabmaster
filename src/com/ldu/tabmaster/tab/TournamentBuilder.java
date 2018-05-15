@@ -71,6 +71,24 @@ public class TournamentBuilder {
     public List<Motion> motions() {
         return new LinkedList<Motion>(motions);
     }
+    
+    public Tournament build()
+            throws TournamentArgumentException {
+        if (judges.size() != expectedJudgeNumber) {
+            throw new UnmatchedJudgeNumberException(
+                    judges.size(), expectedJudgeNumber);
+        }
+        if (teams.size() != expectedTeamNumber) {
+            throw new UnmatchedTeamNumberException(
+                    teams.size(), expectedTeamNumber);
+        }
+        if (motions.size() != expectedMotionNumber) {
+            throw new UnmatchedMotionNumberException(
+                    motions.size(), expectedMotionNumber);
+        }
+        
+        return new Tournament(judges, teams, motions);
+    }
 
     /**
      * Validate that defined amount of teams and judges is valid to
