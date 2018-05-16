@@ -6,5 +6,12 @@ public class EmptyJudgeListException extends InvalidJudgeListException {
      * 
      */
     private static final long serialVersionUID = -5728831464935768108L;
+    
+    public EmptyJudgeListException() {
+    }
+    
+    public EmptyJudgeListException(String str) {
+        super(str);
+    }
 
 }
