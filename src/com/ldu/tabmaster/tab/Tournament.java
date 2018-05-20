@@ -79,9 +79,8 @@ public class Tournament {
         Judge judgeArr[][] = new Judge[roomCount()][];
         placeJudgesForRound(judgeArr);
         
-        
-
-        throw new NotImplementedException();
+        Room rooms[] = generateRooms(judgeArr);
+        return new Tab(rooms);
     }
 
     /**
@@ -126,5 +125,10 @@ public class Tournament {
                 arr[i][a] = wingIterator.next();
             }
         }
+    }
+    
+    private Room[] generateRooms(Judge judgeArr[][]) {
+        
+        throw new NotImplementedException();
     }
 }
