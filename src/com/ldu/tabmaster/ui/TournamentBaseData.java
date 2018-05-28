@@ -1,15 +1,22 @@
 package com.ldu.tabmaster.ui;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
+import com.ldu.tabmaster.tab.Motion;
+import com.ldu.tabmaster.tab.elements.Judge;
+import com.ldu.tabmaster.tab.elements.Team;
+import com.ldu.tabmaster.tab.elements.Wing;
+
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class TournamentBaseData {
     
@@ -27,6 +34,11 @@ public class TournamentBaseData {
     private Label wingAmountLbl;
     private Label judgeAmountLbl;
     private Label teamAmountLbl;
+    
+    TableView<Motion> motionTable;
+    TableView<Team> teamTable;
+    TableView<Judge> judgeTable;
+    TableView<Wing> wingTable;
     
     public TournamentBaseData(Stage stage, int judges, int wings, int motions,
             int teams) {
@@ -54,12 +66,25 @@ public class TournamentBaseData {
         wingAmountLbl   = (Label) scene.lookup("#wingAmountLbl");
         judgeAmountLbl  = (Label) scene.lookup("#judgeAmountLbl");
         teamAmountLbl   = (Label) scene.lookup("#teamAmountLbl");
+        motionTable     = (TableView<Motion>) scene.lookup("#motionTable");
+        teamTable       = (TableView<Team>)   scene.lookup("#teamTable");
+        judgeTable      = (TableView<Judge>)  scene.lookup("#judgeTable");
+        wingTable       = (TableView<Wing>)   scene.lookup("#wingTable");
         
         motionNumberSpn.setValueFactory(new MotionSpinnerValueFactory(
                 motions));
         teamNumberSpn.setValueFactory(new TeamSpinnerValueFactory(teams));
         judgeNumberSpn.setValueFactory(new JudgeSpinnerValueFactory(judges));
         wingNumberSpn.setValueFactory(new WingSpinnerValueFactory(wings));
+        
+        motionTable.setItems(FXCollections.observableList(
+                new LinkedList<Motion>()));
+        teamTable.setItems(FXCollections.observableList(
+                new LinkedList<Team>()));
+        judgeTable.setItems(FXCollections.observableList(
+                new LinkedList<Judge>()));
+        wingTable.setItems(FXCollections.observableList(
+                new LinkedList<Wing>()));
         
         updateAllInfoLabels();
         
