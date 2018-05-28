@@ -51,10 +51,10 @@ public class CreateTournament {
         cancel       = (Button)  primaryScene.lookup("#cancel");
         create       = (Button)  primaryScene.lookup("#create");
         
-        motionNumber.setValueFactory(new IntegerSpinnerValueFactory(1, 100));
-        teamNumber.setValueFactory(new TeamValueFactory());
-        judgeNumber.setValueFactory(new IntegerSpinnerValueFactory(1, 200));
-        wingNumber.setValueFactory(new IntegerSpinnerValueFactory(0, 800));
+        motionNumber.setValueFactory(new MotionValueSpinnerFactory());
+        teamNumber.setValueFactory(new TeamValueSpinnerFactory());
+        judgeNumber.setValueFactory(new JudgeValueSpinnerFactory());
+        wingNumber.setValueFactory(new WingValueSpinnerFactory());
         
         cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -115,14 +115,4 @@ public class CreateTournament {
         primaryStage.close();
     }
 
-}
-
-class TeamValueFactory extends IntegerSpinnerValueFactory {
-    
-    public TeamValueFactory() {
-        // Limit team number from 4 to 800.
-        super(4, 800);
-        this.setAmountToStepBy(4);
-    }
-    
 }
