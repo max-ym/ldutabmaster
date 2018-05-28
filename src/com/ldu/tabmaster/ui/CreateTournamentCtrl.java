@@ -10,6 +10,7 @@ public class CreateTournamentCtrl {
     
     public void cancel() {
         // TODO
+        view.closeView();
     }
     
     public void create() {

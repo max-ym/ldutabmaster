@@ -110,6 +110,10 @@ public class CreateTournament {
         
         alert.showAndWait();
     }
+    
+    public void closeView() {
+        primaryStage.close();
+    }
 
 }
 
