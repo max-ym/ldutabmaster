@@ -50,13 +50,13 @@
         </Menu>
       </menus>
     </MenuBar>
-      <Accordion VBox.vgrow="ALWAYS">
+      <Accordion fx:id="accordion" VBox.vgrow="ALWAYS">
         <panes>
           <TitledPane animated="false" text="Motions">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="12.0">
                      <children>
-                        <Label fx:id="amountOfMotionsLabel" text="Amount of motions" />
+                        <Label fx:id="motionAmountLbl" text="Amount of motions" />
                         <TableView prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
                            <columns>
                               <TableColumn prefWidth="48.0" resizable="false" text="ID" />
@@ -75,7 +75,7 @@
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="12.0">
                      <children>
-                        <Label fx:id="amountOfTeamsLabel" text="Amount of teams" />
+                        <Label fx:id="teamAmountLbl" text="Amount of teams" />
                         <TableView prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
                            <columns>
                               <TableColumn prefWidth="48.0" resizable="false" text="ID" />
@@ -95,7 +95,7 @@
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="12.0">
                      <children>
-                        <Label fx:id="amountOfJudgesLabel" text="Amount of judges" />
+                        <Label fx:id="judgeAmountLbl" text="Amount of judges" />
                         <TableView prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
                            <columns>
                               <TableColumn prefWidth="200.0" text="Name" />
@@ -113,7 +113,7 @@
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="12.0">
                      <children>
-                        <Label fx:id="amountOfWingsLabel" text="Amount of wings" />
+                        <Label fx:id="wingAmountLbl" text="Amount of wings" />
                         <TableView prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn prefWidth="200.0" text="Name" />
@@ -127,7 +127,7 @@
                   </VBox>
                </content>
             </TitledPane>
-            <TitledPane animated="false" text="General Settings">
+            <TitledPane fx:id="generalSettingsPane" animated="false" text="General Settings">
                <content>
                   <VBox spacing="12.0">
                      <children>
@@ -165,14 +165,14 @@
                         <HBox alignment="CENTER" spacing="18.0">
                            <children>
                               <Button fx:id="applySettingsBtn" mnemonicParsing="false" text="Apply Settings" />
-                              <Button fx:id="resetSettingsBtn" mnemonicParsing="false" text="Revert Settings" />
+                              <Button fx:id="revertSettingsBtn" mnemonicParsing="false" text="Revert Settings" />
                            </children>
                         </HBox>
                         <Separator prefWidth="200.0" />
                         <HBox alignment="CENTER" spacing="12.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Revert All Changes" />
-                              <Button mnemonicParsing="false" text="Save Changes" />
+                              <Button fx:id="revertAllBtn" mnemonicParsing="false" text="Revert All Changes" />
+                              <Button fx:id="saveBtn" mnemonicParsing="false" text="Save Changes" />
                               <Button fx:id="startTournamentBtn" mnemonicParsing="false" text="Start Tournament" />
                            </children>
                         </HBox>

@@ -16,7 +16,8 @@ public class CreateTournamentCtrl {
     public void create() {
         boolean valuesOk = checkValues();
         if (valuesOk) {
-            // TODO
+            new TournamentBaseData(view.stage(), view.judgeCount(),
+                    view.wingCount(), view.motionCount(), view.teamCount());
         }
     }
     

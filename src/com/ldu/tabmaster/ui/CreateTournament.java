@@ -51,10 +51,10 @@ public class CreateTournament {
         cancel       = (Button)  primaryScene.lookup("#cancel");
         create       = (Button)  primaryScene.lookup("#create");
         
-        motionNumber.setValueFactory(new MotionValueSpinnerFactory());
-        teamNumber.setValueFactory(new TeamValueSpinnerFactory());
-        judgeNumber.setValueFactory(new JudgeValueSpinnerFactory());
-        wingNumber.setValueFactory(new WingValueSpinnerFactory());
+        motionNumber.setValueFactory(new MotionSpinnerValueFactory());
+        teamNumber.setValueFactory(new TeamSpinnerValueFactory());
+        judgeNumber.setValueFactory(new JudgeSpinnerValueFactory());
+        wingNumber.setValueFactory(new WingSpinnerValueFactory());
         
         cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -91,6 +91,14 @@ public class CreateTournament {
         return teamNumber.getValue().intValue();
     }
     
+    public int motionCount() {
+        return motionNumber.getValue().intValue();
+    }
+    
+    public int wingCount() {
+        return wingNumber.getValue().intValue();
+    }
+    
     public void showNotEnoughJudges() {
         Alert alert = new Alert(AlertType.ERROR);
         alert.initOwner(primaryStage);
@@ -113,6 +121,10 @@ public class CreateTournament {
     
     public void closeView() {
         primaryStage.close();
+    }
+    
+    public Stage stage() {
+        return primaryStage;
     }
 
 }
